@@ -42,6 +42,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	public Authentication attemptAuthentication(HttpServletRequest req,
 												HttpServletResponse res) throws AuthenticationException {
 		try {
+			
 			LoginRequestModel creds = new ObjectMapper()
 					.readValue(req.getInputStream(), LoginRequestModel.class);
 			
@@ -51,6 +52,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 							creds.getPassword(),
 							new ArrayList<>())
 					);
+			
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -69,6 +71,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 				.setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(environment.getProperty("token.expiration_time"))))
 				.signWith(SignatureAlgorithm.HS512, environment.getProperty("token.secret"))
 				.compact();
+		
 		res.addHeader("token", token);
 		res.addHeader("userId", userDto.getUserId());
 	}
