@@ -15,6 +15,11 @@ import com.google.common.net.HttpHeaders;
 import io.jsonwebtoken.Jwts;
 import reactor.core.publisher.Mono;
 
+/**
+ * @Class AuthorizationHeaderFilter
+ * @Description: this class check the token of user
+ * is valid and return httpStatus of User
+ */
 @Component
 public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config> {
 	
@@ -29,6 +34,11 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 		//Put configuration properties here
 	}
 
+	/**
+	 * @Method GatewayFilter
+	 * @Description Check the request and response 
+	 * of the user his status.
+	 */
 	@Override
 	public GatewayFilter apply(Config config) {
 		return (exchange, chain) -> {
@@ -57,6 +67,10 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 		return response.setComplete();
 	}
 	
+	/**
+	 * @Method isJwtValid
+	 * @Description Check if token is valid.
+	 */
 	private boolean isJwtValid(String jwt) {
 		
 		boolean returnValue = true;

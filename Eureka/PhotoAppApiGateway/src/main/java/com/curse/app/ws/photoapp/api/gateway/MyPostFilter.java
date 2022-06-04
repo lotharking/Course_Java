@@ -9,6 +9,12 @@ import org.springframework.web.server.ServerWebExchange;
 
 import reactor.core.publisher.Mono;
 
+/**
+ * Configuration of the post-filter in charge 
+ * of attending the requests after entering 
+ * the methods.
+ * In this case,...
+ */
 @Component
 public class MyPostFilter implements GlobalFilter {
 

@@ -12,6 +12,13 @@ import org.springframework.web.server.ServerWebExchange;
 
 import reactor.core.publisher.Mono;
 
+/**
+ * Configuration of the pre-filter in charge 
+ * of attending the requests before entering 
+ * the methods.
+ * In this case, the Pre-Filter check the headers
+ * and continue with the execution
+ */
 @Component
 public class MyPreFilter implements GlobalFilter {
 
@@ -20,7 +27,7 @@ public class MyPreFilter implements GlobalFilter {
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
-		logger.info("My firs pre filter has executed...");
+		logger.info("My first pre filter has executed...");
 		
 		String requestPath = exchange.getRequest().getPath().toString();		
 		logger.info("Request Path = "+ requestPath);

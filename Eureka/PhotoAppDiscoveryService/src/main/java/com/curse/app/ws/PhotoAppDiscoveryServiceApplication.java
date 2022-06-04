@@ -4,6 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
+/**
+ * Discovery server service for micro services
+ * this service deploy the eureka server 
+ * */
 @SpringBootApplication
 @EnableEurekaServer
 public class PhotoAppDiscoveryServiceApplication {

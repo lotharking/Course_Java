@@ -3,6 +3,9 @@ package com.curse.app.ws.photoapp.api.gateway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Microservices gateway initiator
+ */
 @SpringBootApplication
 public class PhotoAppApiGatewayApplication {
 
