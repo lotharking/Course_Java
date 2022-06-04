@@ -33,7 +33,7 @@ public class GlobalFiltersConfiguration {
 			
 			return chain.filter(exchange).then(Mono.fromRunnable(()-> {
 
-				logger.info("My second global post filter has executed...");
+				logger.info("My third global post filter has executed...");
 				
 			}));
 		};
@@ -49,7 +49,7 @@ public class GlobalFiltersConfiguration {
 			
 			return chain.filter(exchange).then(Mono.fromRunnable(()-> {
 	
-				logger.info("My third global post filter has executed...");
+				logger.info("My second global post filter has executed...");
 				
 			}));
 		};
@@ -66,7 +66,7 @@ public class GlobalFiltersConfiguration {
 		
 		return chain.filter(exchange).then(Mono.fromRunnable(()-> {
 	
-			logger.info("My fourth global post filter has executed...");
+			logger.info("My First global post filter has executed...");
 			
 		}));
 	};
