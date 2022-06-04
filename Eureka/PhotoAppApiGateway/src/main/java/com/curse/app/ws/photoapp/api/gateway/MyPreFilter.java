@@ -13,7 +13,8 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * Configuration of the pre-filter in charge 
+ * @Class MyPreFilter
+ * @Description Configuration of the pre-filter in charge 
  * of attending the requests before entering 
  * the methods.
  * In this case, the Pre-Filter check the headers
