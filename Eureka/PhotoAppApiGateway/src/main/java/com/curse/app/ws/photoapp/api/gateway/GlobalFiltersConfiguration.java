@@ -35,6 +35,21 @@ public class GlobalFiltersConfiguration {
 				
 			}));
 		};
+	}
+		
+		@Bean
+		public GlobalFilter thirtFilter() {
+			
+			return (exchange, chain) -> {
+
+				logger.info("My thirt global pre filter has executed...");
+				
+				return chain.filter(exchange).then(Mono.fromRunnable(()-> {
+
+					logger.info("My thirt global post filter has executed...");
+					
+				}));
+			};
 		
 	}
 
