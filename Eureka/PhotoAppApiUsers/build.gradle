@@ -32,6 +32,7 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	implementation 'org.modelmapper:modelmapper:2.3.7' // if not hava a version not is recognize
 	implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'//Bus for review the changes while project running
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'//monitor for services
 	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
