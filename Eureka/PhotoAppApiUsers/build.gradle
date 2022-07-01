@@ -30,6 +30,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'	
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+	implementation 'mysql:mysql-connector-java'
 	implementation 'org.modelmapper:modelmapper:2.3.7' // if not hava a version not is recognize
 	implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'//Bus for review the changes while project running
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'//monitor for services
