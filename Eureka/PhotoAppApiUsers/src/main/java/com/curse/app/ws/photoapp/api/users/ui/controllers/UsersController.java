@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import com.curse.app.ws.photoapp.api.users.service.*;
 import com.curse.app.ws.photoapp.api.users.shared.*;
 import com.curse.app.ws.photoapp.api.users.ul.model.CreateUserRequestModel;
 import com.curse.app.ws.photoapp.api.users.ul.model.CreateUserResponseModel;
+import com.curse.app.ws.photoapp.api.users.ul.model.UserResponseModel;
 
 @RestController
 @RequestMapping("/users")
@@ -53,4 +55,14 @@ public class UsersController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(returnValue);
 	}
+	
+	@GetMapping(value = "/{userId}", produces = { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<UserResponseModel> getUser(@PathVariable("UserId") String userId){
+		
+		UserDto userDto = usersService.getUserByUserId(userId);
+		UserResponseModel ReturnValue = new ModelMapper().map(userDto, UserResponseModel.class);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(RetunValue);
+	}
+	
 }
