@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.curse.app.ws.photoapp.api.users.ul.model.AlbumResponseModel;
 
+/**
+ * @interface AlbumsServiceClient
+ * @Description: this interface callback the albums micro service
+ * 				and is necessary for album service is ok
+ */
 @FeignClient(name = "albums-ws")
 public interface AlbumsServiceClient {
 	
