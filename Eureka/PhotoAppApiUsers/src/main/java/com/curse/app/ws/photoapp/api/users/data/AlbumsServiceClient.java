@@ -11,7 +11,8 @@ import com.curse.app.ws.photoapp.api.users.ul.model.AlbumResponseModel;
 /**
  * @interface AlbumsServiceClient
  * @Description: this interface callback the albums micro service
- * 				and is necessary for album service is ok
+ * 				and it is necessary so that there can be communication 
+ * 				with the api of the albums microservice
  */
 @FeignClient(name = "albums-ws")
 public interface AlbumsServiceClient {
