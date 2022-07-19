@@ -14,9 +14,14 @@ import com.curse.app.ws.photoapp.api.users.ul.model.AlbumResponseModel;
  * 				and it is necessary so that there can be communication 
  * 				with the api of the albums microservice
  */
-@FeignClient(name = "albums-ws")
+@FeignClient(name = "albums-ws") //target microservice name
 public interface AlbumsServiceClient {
 	
+	/**
+	 * @ApiName getAlbums
+	 * @Description: this Api it is a reflection of the api in the micro 
+	 * 				service of albums
+	 */
 	@GetMapping(path = "/users/{id}/albums")
 	public List<AlbumResponseModel> getAlbums(@PathVariable String id);
 
