@@ -18,6 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.curse.app.ws.photoapp.api.users.data.AlbumsServiceClient;
 import com.curse.app.ws.photoapp.api.users.data.UserEntity;
 import com.curse.app.ws.photoapp.api.users.data.UsersRepository;
 import com.curse.app.ws.photoapp.api.users.shared.UserDto;
@@ -28,18 +29,19 @@ public class UsersServiceImpl implements UsersService {
 	
 	UsersRepository usersRepository;
 	BCryptPasswordEncoder bCryptPasswordEncoder;
-	RestTemplate restTemplate;
+	//RestTemplate restTemplate;
 	Environment environment;
+	AlbumsServiceClient albumsServiceClient;
 
 	@Autowired
 	public UsersServiceImpl(UsersRepository usersRepository, 
 			BCryptPasswordEncoder bCryptPasswordEncoder, 
-			RestTemplate restTemplate,
+			AlbumsServiceClient albumsServiceClient,
 			Environment environment)
 	{
 		this.usersRepository = usersRepository;
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-		this.restTemplate = restTemplate;
+		this.albumsServiceClient = albumsServiceClient;
 		this.environment = environment;
 	}
 
@@ -85,10 +87,13 @@ public class UsersServiceImpl implements UsersService {
 		
 		UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
 		
+		/*
 		String albumsUrl = String.format(environment.getProperty("albums.url"), userId);
 		ResponseEntity<List<AlbumResponseModel>> albumListResponse = restTemplate.exchange(albumsUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<AlbumResponseModel>>(){
 		});
 		List<AlbumResponseModel> albumsList = albumListResponse.getBody();
+		*/
+		List<AlbumResponseModel> albumsList = albumsServiceClient.getAlbums(userId);
 		
 		userDto.setAlbums(albumsList);
 		return userDto;

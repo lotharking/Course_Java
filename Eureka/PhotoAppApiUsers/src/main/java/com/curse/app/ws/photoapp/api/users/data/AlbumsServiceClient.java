@@ -13,8 +13,9 @@ import com.curse.app.ws.photoapp.api.users.ul.model.AlbumResponseModel;
  * @Description: this interface callback the albums micro service
  * 				and it is necessary so that there can be communication 
  * 				with the api of the albums microservice
+ * 				Nota: The name is the micro service name
  */
-@FeignClient(name = "albums-ws") //target microservice name
+@FeignClient(name="albums-ws")
 public interface AlbumsServiceClient {
 	
 	/**
@@ -23,6 +24,6 @@ public interface AlbumsServiceClient {
 	 * 				service of albums
 	 */
 	@GetMapping(path = "/users/{id}/albums")
-	public List<AlbumResponseModel> getAlbums(@PathVariable String id);
+	public List<AlbumResponseModel> getAlbums(@PathVariable("id") String id);
 
 }
