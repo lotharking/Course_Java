@@ -9,15 +9,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
+import feign.Logger;
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
 public class PhotoAppApiUsersApplication {
 
+	/**
+	 * @Method main
+	 * @param args
+	 * @Descryption Main execution
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(PhotoAppApiUsersApplication.class, args);
 	}
 	
+	/**
+	 * @Method BCryptPasswordEncoder
+	 * @return Values encrypted
+	 */
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder()
 	{
@@ -31,4 +42,14 @@ public class PhotoAppApiUsersApplication {
 		return new RestTemplate();
 	}
 
+	/**
+	 * @Method feignLoggerLevel
+	 * @return the content of the http request for validation
+	 */
+	@Bean
+	Logger.Level feignLoggerLevel()
+	{
+		return Logger.Level.FULL;
+	}
+	
 }
