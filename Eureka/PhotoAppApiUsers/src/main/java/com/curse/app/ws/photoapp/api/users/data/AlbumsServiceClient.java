@@ -23,7 +23,7 @@ public interface AlbumsServiceClient {
 	 * @Description: this Api it is a reflection of the api in the micro 
 	 * 				service of albums
 	 */
-	@GetMapping(path = "/users/{id}/albums")
+	@GetMapping(path = "/users/{id}/albumss")
 	public List<AlbumResponseModel> getAlbums(@PathVariable("id") String id);
 
 }

@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
@@ -24,6 +26,8 @@ import com.curse.app.ws.photoapp.api.users.data.UsersRepository;
 import com.curse.app.ws.photoapp.api.users.shared.UserDto;
 import com.curse.app.ws.photoapp.api.users.ul.model.AlbumResponseModel;
 
+import feign.FeignException;
+
 @Service
 public class UsersServiceImpl implements UsersService {
 	
@@ -32,6 +36,8 @@ public class UsersServiceImpl implements UsersService {
 	//RestTemplate restTemplate;
 	Environment environment;
 	AlbumsServiceClient albumsServiceClient;
+	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	public UsersServiceImpl(UsersRepository usersRepository, 
@@ -71,6 +77,11 @@ public class UsersServiceImpl implements UsersService {
 		return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), true, true, true, true, new ArrayList<>());
 	}
 
+	/**
+	 * @Method getUserDtoByEmail
+	 * @param email
+	 * @Description get user data by email
+	 */
 	@Override
 	public UserDto getUserDtoByEmail(String email) {
 		UserEntity userEntity = usersRepository.findByEmail(email);
@@ -79,6 +90,10 @@ public class UsersServiceImpl implements UsersService {
 		return new ModelMapper().map(userEntity, UserDto.class);
 	}
 
+	/**
+	 * @Method getUserByUserId
+	 * @Description get user data by id
+	 */
 	@Override
 	public UserDto getUserByUserId(String userId) {
 		
@@ -96,6 +111,7 @@ public class UsersServiceImpl implements UsersService {
 		List<AlbumResponseModel> albumsList = albumsServiceClient.getAlbums(userId);
 		
 		userDto.setAlbums(albumsList);
+		
 		return userDto;
 	}
 

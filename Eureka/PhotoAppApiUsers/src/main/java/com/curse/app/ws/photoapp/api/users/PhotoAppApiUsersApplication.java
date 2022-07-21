@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
+import com.curse.app.ws.photoapp.api.users.shared.FeignErrorDecoder;
+
 import feign.Logger;
 
 @SpringBootApplication
@@ -19,7 +21,7 @@ public class PhotoAppApiUsersApplication {
 	/**
 	 * @Method main
 	 * @param args
-	 * @Descryption Main execution
+	 * @Description Main execution
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(PhotoAppApiUsersApplication.class, args);
@@ -51,5 +53,15 @@ public class PhotoAppApiUsersApplication {
 	{
 		return Logger.Level.FULL;
 	}
+	
+	/**
+	 * @Method getFeignErrorDecoder
+	 * @return control Feign error
+	 *//*
+	@Bean
+	public FeignErrorDecoder getFeignErrorDecoder()
+	{
+		return new FeignErrorDecoder();
+	}*/ //it is not necessary because it is a component
 	
 }
