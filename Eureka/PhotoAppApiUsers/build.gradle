@@ -31,6 +31,7 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'	
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j'
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.modelmapper:modelmapper:2.3.7' // if not hava a version not is recognize
 	implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'//Bus for review the changes while project running
